@@ -1,0 +1,78 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "title": "General Climate of Fire Prone Areas",
+    "width": "container",
+    "data": {
+      "url": "https://raw.githubusercontent.com/nityagithub/Assignment2/main/weatherAUS%20-%20Copy.csv"
+    },
+    "params": [
+      {
+        "name": "town_selection",
+        "value": "Esperance",
+        "bind": {
+          "input": "select",
+          "options": [
+              "Bairnsdale East",
+              "Bendigo",
+              "Esperance",
+              "Kalgoorlie",
+              "Kangaroo Island",
+              "Mildura"
+            ],
+          "labels": [
+              "Bairnsdale East",
+              "Bendigo",
+              "Esperance",
+              "Kalgoorlie",
+              "Kangaroo Island",
+              "Mildura"
+          ],
+          "name": "Town: "
+        }
+      }
+      ],
+    "transform": [{
+        "filter": "town_selection == null || datum.Location == town_selection"
+        }],
+        "encoding": {
+      "x": {
+        "timeUnit": "month",
+        "title": "Month",
+        "field": "Date",
+        "axis": {"format": "%b", "title": null}
+      }
+    },
+    "layer": [
+      {
+        "mark": {"opacity": 0.5, "type": "area", "color": "#e09061"},
+        "encoding": {
+          "y": {
+            "aggregate": "average",
+            "scale":{"domain":[0,30]},
+            "field": "MaxTemp",
+            "title": "Temperature (°C)",
+            "axis": {"titleColor": "#c71515"}
+          },
+  
+          "y2": {
+            "aggregate": "average",
+            "field": "MinTemp"
+          }
+        }
+      },
+      {
+        "mark": {"opacity": 0.5,"stroke": "#d53e4f", "type": "line", "interpolate": "monotone"},
+        "encoding": {
+          "y": {
+            "aggregate": "average",
+            "scale":{"domain":[0,30]},
+            "field": "WindSpeed",
+            "title": "Wind Speed (km/hr)",
+            "axis": {"titleColor":"#d53e4f"}
+          }
+        }
+      }
+    ],
+    "resolve": {"scale": {"y": "independent"}}
+  }
+  
