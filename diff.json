@@ -1,0 +1,146 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Fire Prone Region Climate",
+    "data": {
+      "url": "https://raw.githubusercontent.com/nityagithub/Assignment2/main/weatherAUS%20-%20Copy.csv"
+    },
+    "params": [
+        {
+            "name": "town_selection",
+            "value": "Bairnsdale East",
+            "bind": {
+              "input": "select",
+              "options": [
+                "Bairnsdale East",
+                "Bendigo",
+                "Esperance",
+                "Kalgoorlie",
+                "Kangaroo Island",
+                "Mildura"
+                ],
+              "labels": [
+                "Bairnsdale East",
+                "Bendigo",
+                "Esperance",
+                "Kalgoorlie",
+                "Kangaroo Island",
+                "Mildura"
+              ],
+              "name": "Town: "
+            }   
+        },
+        {   
+            "name": "year_selection",
+            "value": "2014",
+            "bind": {
+                "input": "select",
+                "options": [
+                "2014",
+                "2015",
+                "2016",
+                "2017"
+                ],
+                "labels": [
+                "2014",
+                "2015",
+                "2016",
+                "2017"
+                ],
+                "name": "Year: "
+            }
+        },
+        {
+            "name": "month_selection",
+            "bind": {
+              "input": "select",
+              "options": [
+                "12",
+                "1",
+                "2"
+              ],
+              "labels": [
+                "December",
+                "January",
+                "February"
+              ],
+              "name": "Select Month: "
+            }
+        }
+        ],
+        "transform": [
+        {"filter": "datum.Location == town_selection"},
+        {"filter": "year(datum.Date) == year_selection"},
+        {"filter":"month_selection == null || month(datum.Date) == month_selection"}
+    ],    
+    "vconcat": [
+      {
+        "encoding": {
+          "color": {
+            "condition": {
+              "param": "brush",
+              "title": "Location",
+              "field": "Location",
+              "type": "nominal",
+              "scale": {
+                "domain": ["Bairnsdale East","Bendigo","Esperance","Kalgoorlie","Kangaroo Island","Mildura"],
+                "range": ["#1f77b4", "#a7a7a7", "#aec7e8", "#e7ba52", "#e09061"]
+              }
+            },
+            "value": "lightgray"
+          },
+          "size": {
+            "title": "Humidity",
+            "field": "Humidity",
+            "scale": {"domain": [0, 50]},
+            "type": "quantitative"
+          },
+          "x": {
+            "field": "Date",
+            "timeUnit": "monthdate",
+            "title": "Date",
+            "axis": {"format": "%b"}
+          },
+          "y": {
+            "title": "Maximum Daily Temperature (C)",
+            "field": "MaxTemp",
+            "scale": {"domain": [0, 50]},
+            "type": "quantitative"
+          }
+        },
+        "width": 600,
+        "height": 300,
+        "mark": "point",
+        "params": [{
+          "name": "brush",
+          "select": {"type": "interval", "encodings": ["x"]}
+        }],
+        "transform": [{"filter": {"param": "click"}}]
+      },
+      {
+        "encoding": {
+          "color": {
+            "condition": {
+              "param": "click",
+              "field": "Location",
+              "scale": {
+                "domain": ["Bairnsdale East","Bendigo","Esperance","Kalgoorlie","Kangaroo Island","Mildura"],
+                "range": ["#1f77b4", "#a7a7a7", "#aec7e8", "#e7ba52", "#e09061"]
+              }
+            },
+            "value": "lightgray"
+          },
+          "x": {"aggregate": "count"},
+          "y": {"title": "Location", "field": "Location"}
+        },
+        "width": 600,
+        "mark": "bar",
+        "params": [{
+          "name": "click",
+          "select": {"type": "point", "encodings": ["color"]}
+        }],
+        "transform": [{"filter": {"param": "brush"}}]
+      }
+    ]
+  }
+  
+  
