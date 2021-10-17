@@ -61,7 +61,7 @@
     {"filter": "year(datum.Date) == year_selection"},
     {"filter": "datum.Location == town_selection"}],
   "layer": [{
-    "mark": {"type": "line", "color": "lightblue"},
+    "mark": {"type": "line", "color": "grey"},
     "encoding": {
       "y": {"field": "MinTemp", "type": "quantitative"}
     }
