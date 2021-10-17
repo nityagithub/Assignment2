@@ -53,15 +53,15 @@
     "x": {"timeUnit": "yearmonthdate", "field": "Date"},
     "tooltip": [
       {"timeUnit": "yearmonthdate", "field": "Date"},
-      {"field": "MaxTemp", "type": "quantitative"},
-      {"field": "MinTemp", "type": "quantitative"}
+      {"field": "MinTemp", "type": "quantitative"},
+      {"field": "MaxTemp", "type": "quantitative"}
     ]
   },
   "transform": [
     {"filter": "year(datum.Date) == year_selection"},
     {"filter": "datum.Location == town_selection"}],
   "layer": [{
-    "mark": {"type": "line", "color": "black"},
+    "mark": {"type": "line", "color": "lightblue"},
     "encoding": {
       "y": {"field": "MinTemp", "type": "quantitative"}
     }
