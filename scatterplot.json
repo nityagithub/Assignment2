@@ -1,103 +1,107 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": "container",
-    "height": 300,
-    "data": {
-      "url": "https://raw.githubusercontent.com/nityagithub/Assignment2/main/fire.csv"
-    },
-    "params": [
-        {"name": "Month_day",
-          "value": 1,
-          "bind": {
-            "input": "range",
-            "min": 1,
-            "max": 30,
-            "step": 1,
-            "name": "Day: "
-          }},
-          {
-          "name": "month_selection",
-          "bind": {
-            "input": "select",
-            "options": [
-               null, 
-              "11",
-              "12",
-              "1"
-            ],
-            "labels": [
-              "Show All",
-              "November",
-              "December",
-              "January"
-            ],
-            "name": "Select Month: "
-          }
-        }
-    ],
-    "layer": [
-      {
-        "mark": {
-          "type": "point",
-          "filled": true
-        },
-        "transform": [
-            {"filter": "datum.frp > 0"},
-            {"filter": "datum.day == Month_day"},
-            {"filter": "month_selection == null || datum.month == month_selection"},
-            {"filter": "datum.confidence > 99"}
-        ],
-        "encoding": {
-          "x": {
-            "field": "brightness",
-            "type": "quantitative",
-            "scale": {"domain": [290,560]}
-          },
-          "y": {
-            "field": "frp",
-            "type": "quantitative"
-          }
-        }
-      },
-      {
-        "mark": {
-          "type": "line",
-          "color": "firebrick"
-        },
-        "transform": [
-          {
-            "regression": "frp",
-            "on": "brightness"
-          }
-        ],
-        "encoding": {
-          "x": {
-            "field": "brightness",
-            "type": "quantitative",
-            "scale": {"domain": [290,560]}
-          },
-          "y": {
-            "field": "frp",
-            "type": "quantitative"
-          }
-        }
-      },
-      {
-        "transform": [
-          {
-            "regression": "frp",
-            "on": "brightness",
-            "params": true
-          }
-          
-        ],
-        "mark": {
-          "type": "text",
-          "color": "firebrick",
-          "x": "width",
-          "align": "right",
-          "y": -5
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 300,
+  "data": {
+    "url": "https://raw.githubusercontent.com/nityagithub/Assignment2/main/fire.csv"
+  },
+  "params": [
+      {"name": "Month_day",
+        "value": 1,
+        "bind": {
+          "input": "range",
+          "min": 1,
+          "max": 30,
+          "step": 1,
+          "name": "Day: "
+        }},
+        {
+        "name": "month_selection",
+        "bind": {
+          "input": "select",
+          "options": [
+             null, 
+            "11",
+            "12",
+            "1"
+          ],
+          "labels": [
+            "Show All",
+            "November",
+            "December",
+            "January"
+          ],
+          "name": "Select Month: "
         }
       }
-    ]
-  }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "point",
+        "filled": true
+      },
+      "transform": [
+          {"filter": "datum.frp > 0"},
+          {"filter": "datum.day == Month_day"},
+          {"filter": "month_selection == null || datum.month == month_selection"},
+          {"filter": "datum.confidence > 99"}
+      ],
+      "encoding": {
+        "x": {
+          "field": "brightness",
+          "type": "quantitative",
+          "scale": {"domain": [290,560]}
+        },
+        "y": {
+          "field": "frp",
+          "type": "quantitative"
+        },
+            "tooltip": [
+    {"field": "brightness", "title": "Brightness"},
+    {"field": "frp", "title": "Fire Raditation Point"}
+  ]
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "color": "firebrick"
+      },
+      "transform": [
+        {
+          "regression": "frp",
+          "on": "brightness"
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "brightness",
+          "type": "quantitative",
+          "scale": {"domain": [290,560]}
+        },
+        "y": {
+          "field": "frp",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "regression": "frp",
+          "on": "brightness",
+          "params": true
+        }
+        
+      ],
+      "mark": {
+        "type": "text",
+        "color": "firebrick",
+        "x": "width",
+        "align": "right",
+        "y": -5
+      }
+    }
+  ]
+}
