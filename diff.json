@@ -7,7 +7,7 @@
   "params": [
       {
           "name": "town_selection",
-          "value": "Bairnsdale East",
+          "value": "Kalgoorlie,
           "bind": {
             "input": "select",
             "options": [
