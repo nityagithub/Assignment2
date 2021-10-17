@@ -7,7 +7,7 @@
   "params": [
       {
           "name": "town_selection",
-          "value": "Kalgoorlie,
+          "value": "Kalgoorlie",
           "bind": {
             "input": "select",
             "options": [
@@ -93,7 +93,7 @@
     {"field": "MaxTemp", "title": "Maximum Temperature"},
     {"field": "Humidity", "title": "Humidity"}]
 },     
-      "width": 700,
+      "width": 715,
       "height": 300,
       "mark": "point",
       "params": [{
