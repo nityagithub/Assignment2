@@ -48,29 +48,11 @@
                 ],
                 "name": "Year: "
             }
-        },
-        {
-            "name": "month_selection",
-            "bind": {
-              "input": "select",
-              "options": [
-                "12",
-                "1",
-                "2"
-              ],
-              "labels": [
-                "December",
-                "January",
-                "February"
-              ],
-              "name": "Select Month: "
-            }
         }
         ],
         "transform": [
         {"filter": "datum.Location == town_selection"},
-        {"filter": "year(datum.Date) == year_selection"},
-        {"filter":"month_selection == null || month(datum.Date) == month_selection"}
+        {"filter": "year(datum.Date) == year_selection"}
     ],    
     "vconcat": [
       {
