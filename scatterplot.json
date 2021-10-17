@@ -88,20 +88,16 @@
     },
     {
       "transform": [
-        {
-          "regression": "frp",
-          "on": "brightness",
-          "params": true
-        }
-        
+        {"calculate": "'Regression line on x,y'",
+        "as": "text_annotation"}
       ],
       "mark": {
         "type": "text",
         "color": "firebrick",
-        "x": "width",
-        "align": "right",
-        "y": -5
-      }
+        "align": "center",
+        "dx": 120
+      },
+      "encoding": {"text": {"field": "text_annotation"}}
     }
   ]
 }
