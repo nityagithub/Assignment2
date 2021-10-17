@@ -17,6 +17,7 @@
         }},
         {
         "name": "month_selection",
+          "value": "1",
         "bind": {
           "input": "select",
           "options": [
