@@ -40,7 +40,8 @@
     {
       "mark": {
         "type": "point",
-        "filled": true
+        "filled": true,
+        "color":"#e09061"
       },
       "transform": [
           {"filter": "datum.frp > 0"},
@@ -67,7 +68,7 @@
     {
       "mark": {
         "type": "line",
-        "color": "firebrick"
+        "color": "black"
       },
       "transform": [
         {
@@ -94,7 +95,7 @@
       ],
       "mark": {
         "type": "text",
-        "color": "firebrick",
+        "color": "black",
         "align": "center",
         "dx": 120
       },
