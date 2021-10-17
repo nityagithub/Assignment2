@@ -60,6 +60,7 @@
           }
         }
       },
+      
       {
         "mark": {"opacity": 0.5,"stroke": "#d53e4f", "type": "line", "interpolate": "monotone"},
         "encoding": {
@@ -69,7 +70,12 @@
             "field": "WindSpeed",
             "title": "Wind Speed (km/hr)",
             "axis": {"titleColor":"#d53e4f"}
-          }
+          }, 
+          "tooltip": [
+            {"field": "Date", "timeUnit": "month", "title": "Month"},
+            {"aggregate": "average","field": "MaxTemp","format":".2f", "title": "Temperature"},
+            {"aggregate": "average","field": "MinTemp","format":".2f", "title": "Windspeed"}
+          ]
         }
       }
     ],
