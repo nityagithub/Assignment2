@@ -65,7 +65,7 @@
             "type": "nominal",
             "scale": {
               "domain": ["Bairnsdale East","Bendigo","Esperance","Kalgoorlie","Kangaroo Island","Mildura"],
-              "range": ["#081263", "#BA162F", "#3686B2", "#F26D06", "#7C18A8", "#0673F2"]
+              "range": ["#081263", "#BA162F", "#3686B2", "#e09061", "#7C18A8", "#0673F2"]
             }
           },
           "value": "lightgray"
@@ -110,7 +110,7 @@
             "field": "Location",
             "scale": {
               "domain": ["Bairnsdale East","Bendigo","Esperance","Kalgoorlie","Kangaroo Island","Mildura"],
-              "range": ["#081263", "#BA162F", "#3686B2", "#F26D06", "#7C18A8", "#0673F2"]
+              "range": ["#081263", "#BA162F", "#3686B2", "#e09061", "#7C18A8", "#0673F2"]
             }
           },
           "value": "lightgray"
