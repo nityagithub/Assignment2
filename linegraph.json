@@ -61,14 +61,14 @@
     {"filter": "year(datum.Date) == year_selection"},
     {"filter": "datum.Location == town_selection"}],
   "layer": [{
+    "mark": {"type": "line", "color": "black"},
+    "encoding": {
+      "y": {"field": "MinTemp", "type": "quantitative"}
+    }
+  }, {
     "mark": {"type": "line", "color": "orange"},
     "encoding": {
       "y": {"field": "MaxTemp", "type": "quantitative"}
-    }
-  }, {
-    "mark": {"type": "line", "color": "blue"},
-    "encoding": {
-      "y": {"field": "MinTemp", "type": "quantitative"}
     }
   }, {
     "mark": "rule",
